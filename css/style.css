@@ -10,7 +10,6 @@
 .all-container{
     width: 100vw;
     height: 100vh;
-    background-color: brown;
     position: relative;
     
 }
@@ -31,4 +30,35 @@
     top:25px;
     left:10%;
     background-color: white;
+    display: flex;
 }
+.side-bar{
+    background-color: aqua;
+    height: 100%;
+}
+.main-content{
+    background-color: black;
+    height: 100%;
+}
+.personal-account{
+    height: 50px;
+    background-color: white;
+}
+.notifiche-banner{
+    height: 70px;
+    background-color: bisque;
+}
+.richerca-chat{
+    height: 30px;
+    background-color: blue;
+}
+.chat-container{
+    height: 84.1%;
+    background-color: brown;
+}
+.chat-item{
+    height: 70px;
+    background-color: white;
+    display: flex;
+}
+

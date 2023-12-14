@@ -43,6 +43,7 @@
 .personal-account{
     height: 50px;
     background-color: white;
+    display: flex;
 }
 .notifiche-banner{
     height: 70px;
@@ -60,5 +61,27 @@
     height: 70px;
     background-color: white;
     display: flex;
+    justify-content: space-between;
+}
+.block-1{
+    display: flex;
+
+}
+.block-1 img{
+    border-radius: 50%;
+    margin-left: 10px;
+}
+.personal-info{
+    margin-left: 15px;
+}
+.personal-info h6{
+    font-size: 20px;
+}
+.personal-info p {
+    font-size: 15px;
+    color: gainsboro;
+}
+.chat-item span{
+    margin-right: 5px;
 }
 

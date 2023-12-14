@@ -81,7 +81,30 @@
     font-size: 15px;
     color: gainsboro;
 }
+/* qui per modificare l'ora  */
 .chat-item span{
     margin-right: 5px;
 }
+.message-container{
+    height: 80vh;
+    background-color: rgba(255, 228, 196, 0.74);
+    padding-top:50px;
+}
 
+.message{
+    
+    padding: 10px;
+    border-radius: 10px;
+}
+.user{
+  
+    margin-left:60% ;
+    background-color: rgba(144, 238, 144, 0.976);
+    
+    
+}
+.pc{
+    margin-left:100px;
+    background-color: white;
+    
+}

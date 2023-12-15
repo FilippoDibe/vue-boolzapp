@@ -23,57 +23,98 @@
         <div class="fascia-bianca">
 
         </div>
-        <div class="container-info">
-            <div class="side-bar col-4">
-                <div class="personal-account">
-
-                </div>
-                <div class="notifiche-banner">
-
-                </div>
-                <div class="richerca-chat">
-
-                </div>
-                <div class="chat-container">
-                    <!-- qua tramite js creo dei div con una classe chat con all'interno tutte le varie specifiche  -->
-
-                    <!-- creazione del primo item chat da esempio  -->
-                    <div class="chat-item">
-                       <div class="block-1">
-                        <img src="avatar-boolzap/avatar_1.jpg" alt="">
-                        <div class="personal-info">
-                            <h6 class="card-title">nome</h6>
-                            <p class="card-text">ultimo messaggio invitato</p>
+        <div id="app">
+            <div class="container-info">
+                <div class="side-bar col-4">
+                    <div class="personal-account">
+                        <div class="img-nome-personale">
+                            <img src="avatar-boolzap/avatar_io.jpg" alt="">
+                            <h6>Sofia</h6>
                         </div>
-                       </div>
-                         <!-- qui andra creata la funzione che prende l'ora dal mio pc e poi ci sottrae 5 minuti cosi da fare l'ultimo acesso -->
-                            <span>ora</span>
-
+                        <div class="icon-personale">
+                            <i class="fa-solid fa-circle-notch"></i>
+                            <i class="fa-solid fa-message"></i>
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </div>
+                       
                     </div>
-
-                </div>
-
-            </div>
-            <div class="main-content col-8">
-                <div class="personal-account">
-
-                </div>
-                <div class="container-chat">
-                    <!-- creazione del prototipo del messaggio del utente  -->
-                    <div class="message-container">
-                            <div class="col-3 message user">
-                                One of two columns
+                    <div class="notifiche-banner">
+                        <div class="banner-icon">
+                            <i class="fa-regular fa-bell-slash"></i>
+                        </div>
+                        <div class="banner-text">
+                            <h6 class="card-title">Ricevi notifiche di nuovi messaggi</h6>
+                            <a class="card-text">Attivita notifiche desktop</a>
+                        </div>
+                    </div>
+                    <div class="richerca-chat">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" placeholder="cerca o inizia una nuova chat">
+                    </div>
+                    <div class="chat-container">
+                        <!-- qua tramite js creo dei div con una classe chat con all'interno tutte le varie specifiche  -->
+    
+                        <!-- creazione del primo item chat da esempio  -->
+                        <div class="chat-item">
+                           <div class="block-1">
+                            <img src="avatar-boolzap/avatar_1.jpg" alt="">
+                            <div class="personal-info">
+                                <h6 class="card-title">nome</h6>
+                                <p class="card-text">ultimo messaggio invitato</p>
                             </div>
-                            <!-- creazione del prototpio del messaggio del pc  -->
-                            <div class="col-3 message pc">
-                                One of two columns
-                            </div>
-                      </div>
-                    
-                   
-                    
+                           </div>
+                             <!-- qui andra creata la funzione che prende l'ora dal mio pc e poi ci sottrae 5 minuti cosi da fare l'ultimo acesso -->
+                                <span>ora</span>
+    
+                        </div>
+    
+                    </div>
+    
                 </div>
-
+                <div class="main-content col-8">
+                    <div class="personal-account">
+                        <div class="personal-chat">
+                            <img src="avatar-boolzap/avatar_1.jpg" alt="">
+                            <div class="personal-info">
+                                <h6 class="card-title">nome</h6>
+                                <p class="card-text">ultimo messaggio invitato</p>
+                            </div>
+                        </div>
+                        <div class="personal-chat-icon">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <i class="fa-solid fa-paperclip"></i>
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        
+                        </div>
+                    </div>
+                    <div class="container-chat">
+                        <!-- creazione del prototipo del messaggio del utente  -->
+                        <div class="message-container">
+                                <div class="col-3 message user">
+                                    One of two columns
+                                </div>
+                                <!-- creazione del prototpio del messaggio del pc  -->
+                                <div class="col-3 message pc">
+                                    One of two columns
+                                </div>
+                          </div>
+                          <div class="message-container-search">
+                                <div class="icon-text-container col-2">
+                                    <i class="fa-regular fa-face-smile"></i>
+                                </div>
+                                <div class="text-input col-8">
+                                    <input type="text" placeholder="scrivi un messaggio">
+                                </div>
+                                <div class="icon-text-container col-2">
+                                    <i class="fa-solid fa-microphone"></i>
+                                </div>
+                          </div>
+                        
+                       
+                        
+                    </div>
+    
+                </div>
             </div>
         </div>
 

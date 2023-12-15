@@ -16,12 +16,12 @@
 .fascia-verde{
     width: 100vw;
     height: 12vh;
-    background-color: rgb(18, 118, 68);
+    background-color: #009688;
 }
 .fascia-bianca{
     width: 100vw;
     height: 88vh;
-    background-color: gainsboro;
+    background-color: #d4dbd8;
 }
 .container-info{
     width: 80vw;
@@ -33,35 +33,37 @@
     display: flex;
 }
 .side-bar{
-    background-color: aqua;
     height: 100%;
 }
 .main-content{
-    background-color: black;
+    
     height: 100%;
 }
 .personal-account{
     height: 50px;
     background-color: white;
     display: flex;
+    margin: 10px 0;
+    
 }
 .notifiche-banner{
     height: 70px;
-    background-color: bisque;
+    background-color: #8edafc;
 }
 .richerca-chat{
     height: 30px;
-    background-color: blue;
 }
 .chat-container{
-    height: 84.1%;
-    background-color: brown;
+    overflow-y: scroll;
+    border-top: solid 1px gainsboro;
+    padding-top: 10px;
 }
 .chat-item{
     height: 70px;
     background-color: white;
     display: flex;
     justify-content: space-between;
+    
 }
 .block-1{
     display: flex;
@@ -86,9 +88,10 @@
     margin-right: 5px;
 }
 .message-container{
-    height: 80vh;
+    height: 83vh;
     background-color: rgba(255, 228, 196, 0.74);
     padding-top:50px;
+    overflow-y: scroll;
 }
 
 .message{
@@ -107,4 +110,103 @@
     margin-left:100px;
     background-color: white;
     
+}
+.message-container-search{
+    height:5vh;
+    background-color: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #f3eeea;
+
+}
+
+
+
+/* zona personale  */
+.personal-account{
+    display: flex;
+    justify-content: space-between;
+    
+
+}
+.img-nome-personale{
+    display: flex;
+    width: 80%;
+    
+}
+.img-nome-personale img{
+
+    border-radius: 50%;
+    margin-left: 10px;
+}
+.img-nome-personale h6{
+   display: flex;
+   align-self: center;
+}
+.icon-personale i{ 
+    font-size: 20px;
+    margin: 10px;
+    color: gray;
+}
+.icon-personale{
+    display: flex;
+}
+.notifiche-banner{
+    display: flex;
+    align-items: center;
+}
+.banner-icon{
+    margin-left: 25px;
+    margin-right: 25px;
+}
+.banner-icon i {
+    padding:15px;
+    background-color: white;
+    border-radius: 50%;
+    font-size: 25px;
+    color: #8edafc;
+}
+.banner-text a{
+    font-size: 15px;
+    color: grey;
+
+}
+.richerca-chat{
+    margin: 10px 10px;
+    border:solid 1px gainsboro;
+    
+}
+.richerca-chat input{
+    border: none;
+    margin-left: 25px;
+}
+.richerca-chat i {
+    color: grey;
+    margin-left: 15px;
+}
+.personal-chat{
+    display: flex;
+    margin-left: 25px;
+}
+.personal-chat-icon{
+    margin-right: 30px;
+    display: flex;
+    align-items: center;
+}
+.personal-chat-icon i{
+    margin-left: 20px;
+    font-size: 20px;
+    color: grey;
+}
+.personal-chat img{
+    border-radius: 50%;
+}
+.icon-text-container{
+  text-align: center;
+  font-size: 25px;
+  color: grey;
+}
+.text-input input{
+    width: 100%;
 }

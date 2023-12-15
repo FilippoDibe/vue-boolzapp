@@ -54,7 +54,7 @@
     height: 30px;
 }
 .chat-container{
-    overflow-y: scroll;
+    
     border-top: solid 1px gainsboro;
     padding-top: 10px;
 }
@@ -63,10 +63,12 @@
     background-color: white;
     display: flex;
     justify-content: space-between;
+    margin-bottom:15px;
     
 }
 .block-1{
     display: flex;
+    width: 50%;
 
 }
 .block-1 img{

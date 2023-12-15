@@ -55,11 +55,11 @@
                         <!-- qua tramite js creo dei div con una classe chat con all'interno tutte le varie specifiche  -->
     
                         <!-- creazione del primo item chat da esempio  -->
-                        <div class="chat-item">
+                        <div v-for="(contact, index) in contacts" :key="index" class="chat-item">
                            <div class="block-1">
-                            <img src="avatar-boolzap/avatar_1.jpg" alt="">
+                            <img :src="contact.avatar" alt="">
                             <div class="personal-info">
-                                <h6 class="card-title">nome</h6>
+                                <h6 class="card-title">{{contact.name}}</h6>
                                 <p class="card-text">ultimo messaggio invitato</p>
                             </div>
                            </div>

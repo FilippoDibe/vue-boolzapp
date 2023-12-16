@@ -247,9 +247,7 @@ createApp({
         // Seleziona il primo contatto quando l'app è montata
         this.selectContact(this.contacts[0]);
 
-        // this.oraCorrente();
 
-        // this.intervalId = setInterval(this.updateCurrentTime, 60000);
 
 
 
@@ -300,6 +298,22 @@ createApp({
                 this.nuovoMessaggio= ' ',
 
                 this.messagiVisualizati = this.selectedContact.messages.slice();
+                  // invio automatico 
+                setTimeout(()=>{
+                    const rispostaAutomatica ={
+                        date: new Date().toLocaleString(),
+                        message:'OK',
+                        status: 'received',
+                        oraMessaggio: luxon.DateTime.local().toLocaleString(luxon.DateTime.TIME_SIMPLE)
+
+                    };
+
+                    // aggiungo la risposta automatica 
+                    this.selectedContact.messages.push(rispostaAutomatica);
+
+                    // aggiornamento della visualizzazione 
+                    this.messagiVisualizati = this.selectedContact.messages.slice()
+                }, 30000 );
             }
 
         
@@ -340,18 +354,7 @@ createApp({
 
     
 
-    // getCurrentTime() {
-    //     return luxon.DateTime.local().toLocaleString(luxon.DateTime.TIME_SIMPLE);
-
-    // },
-    // oraCorrente() {
-    //     const now = luxon.DateTime.local();
-    //     const updatedTime = now.set({ second: 0, millisecond: 0 });
-    //     this.currentTime = updatedTime.toLocaleString(luxon.DateTime.TIME_SIMPLE);
-    // },
-    // beforeUnmount() {
-    //     clearInterval(this.intervalId);
-    // },
+    
 
 
 

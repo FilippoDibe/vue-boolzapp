@@ -49,13 +49,13 @@
                     </div>
                     <div class="richerca-chat">
                         <i class="fa-solid fa-magnifying-glass"></i>
-                        <input type="text" placeholder="cerca o inizia una nuova chat">
+                        <input type="text" v-model="searchChat" @input="searchMessaggi" placeholder="cerca o inizia una nuova chat">
                     </div>
                     <div class="chat-container">
                         <!-- qua tramite js creo dei div con una classe chat con all'interno tutte le varie specifiche  -->
     
                         <!-- creazione del primo item chat da esempio  -->
-                        <div v-for="(contact, index) in contacts" :key="index" class="chat-item">
+                        <div v-for="(contact, index) in displayedContacts" :key="index" class="chat-item":class="{ 'active': contact === selectedContact || (index === 0 && !selectedContact)}" @click="selectContact(contact)">
                            <div class="block-1">
                             <img :src="contact.avatar" alt="">
                             <div class="personal-info">
@@ -74,9 +74,9 @@
                 <div class="main-content col-8">
                     <div class="personal-account">
                         <div class="personal-chat">
-                            <img src="avatar-boolzap/avatar_1.jpg" alt="">
+                            <img  :src="selectedContact ? selectedContact.avatar : ''" alt="">
                             <div class="personal-info">
-                                <h6 class="card-title">nome</h6>
+                                <h6 class="card-title">{{ selectedContact ? selectedContact.name : '' }}</h6>
                                 <p class="card-text">ultimo messaggio invitato</p>
                             </div>
                         </div>
@@ -89,13 +89,9 @@
                     </div>
                     <div class="container-chat">
                         <!-- creazione del prototipo del messaggio del utente  -->
-                        <div class="message-container">
-                                <div class="col-3 message user">
-                                    One of two columns
-                                </div>
-                                <!-- creazione del prototpio del messaggio del pc  -->
-                                <div class="col-3 message pc">
-                                    One of two columns
+                        <div class="message-container"v-if="selectedContact">
+                                <div class="col-3 message" v-for="(message, index) in selectedContact.messages" :key="index" :class="{ 'user': message.status === 'sent', 'pc': message.status === 'received' }" >
+                                    {{ message.message }}
                                 </div>
                           </div>
                           <div class="message-container-search">

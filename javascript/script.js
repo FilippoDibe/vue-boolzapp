@@ -88,7 +88,7 @@ createApp({
             },
             {
                 name: 'Alessandro L.',
-                avatar: 'avatar-boolzap/avatar_5.jpg',
+                avatar: 'avatar-boolzap/user.jpg',
                 visible: true,
                 messages: [
                     {
@@ -105,7 +105,7 @@ createApp({
             },
             {
                 name: 'Claudia',
-                avatar: 'avatar-boolzap/avatar_6.jpg',
+                avatar: 'avatar-boolzap/user.jpg',
                 visible: true,
                 messages: [
                     {
@@ -127,7 +127,7 @@ createApp({
             },
             {
                 name: 'Federico',
-                avatar: 'avatar-boolzap/avatar_7.jpg',
+                avatar: 'avatar-boolzap/user.jpg',
                 visible: true,
                 messages: [
                     {
@@ -144,7 +144,7 @@ createApp({
             },
             {
                 name: 'Davide',
-                avatar: 'avatar-boolzap/avatar_8.jpg,e',
+                avatar: 'avatar-boolzap/user.jpg',
                 visible: true,
                 messages: [
                     {
@@ -164,9 +164,69 @@ createApp({
                     }
                 ],
             }
-        ]
+        ],
+        selectedContact: null,
+        messagiVisualizati: [],
+        searchChat: '',
+        chatFiltrata: [],
+       
         
     }
+
+   },
+   computed: {
+    displayedContacts() {
+        // Se c'è una query di ricerca, filtra e ordina i contatti, altrimenti mostra tutti i contatti
+        if (this.searchChat.trim() !== '') {
+            return this.contacts
+                .filter(contact => contact.name.toLowerCase().includes(this.searchChat.toLowerCase()))
+                .sort((a, b) => a.name.localeCompare(b.name));
+        } else {
+            // Quando non c'è una query di ricerca, mostra i contatti nell'ordine originale
+            return this.contacts.slice();
+        }
+    },
+},
+    mounted() {
+        
+        // Seleziona il primo contatto quando l'app è montata
+        this.selectContact(this.contacts[0]);
+
+    },
+   methods:{
+    selectContact(contact) {
+
+        // rimuovo l'item dalla lista 
+        const index= this.contacts.indexOf(contact);
+        this.contacts.splice(index, 1);
+
+        // inserimento dell'item in cima 
+        this.contacts.unshift(contact);
+
+        // elemento selezionato 
+        this.selectedContact = contact;
+
+        // aggiurnamento dei messaggi al click 
+        this.messagiVisualizati();
+    },
+    messagiVisualizati(){
+        // recupero dei messaggi in base alla chat 
+        if(this.selectedContact){
+            this.messagiVisualizati = this.selectedContact.messages;
+        }else{
+            this.messagiVisualizati= [];
+        }
+    },
+    searchMessaggi(){
+        // ricerca del contatto 
+        const chatFiltrata = this.contacts.filter(contact => contact.name.toLowerCase().includes(this.searchMessaggi.toLowerCase()));
+
+        // ordina i contatti in ordine alfabetico 
+        this.contacts = chatFiltrata.sort((a,b) => a.name.localeCompare(b.name));
+
+        this.displayedContacts = this.filteredContacts.length > 0 ? this.filteredContacts : this.contacts;
+    }
+
    }
 }).mount('#app')
    

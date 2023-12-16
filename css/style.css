@@ -68,7 +68,7 @@
 }
 .block-1{
     display: flex;
-    width: 50%;
+    width: 60%;
 
 }
 .block-1 img{
@@ -83,7 +83,7 @@
 }
 .personal-info p {
     font-size: 15px;
-    color: gainsboro;
+    color: gray;
 }
 /* qui per modificare l'ora  */
 .chat-item span{
@@ -105,6 +105,7 @@
   
     margin-left:60% ;
     background-color: rgba(144, 238, 144, 0.976);
+    margin-bottom: 10px;
     
     
 }
@@ -214,4 +215,8 @@
     height: 40px;
     border-radius:8px;
     border:1px solid gainsboro;
+}
+
+.active{
+    background-color: gainsboro;
 }

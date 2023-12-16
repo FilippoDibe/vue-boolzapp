@@ -63,7 +63,7 @@
                             </div>
                            </div>
                              <!-- qui andra creata la funzione che prende l'ora dal mio pc e poi ci sottrae 5 minuti cosi da fare l'ultimo acesso -->
-                                <span>{{ getCurrentTime() }}</span>
+                                <span>ora ultimo messaggio </span>
     
                         </div>
     
@@ -76,7 +76,7 @@
                             <img  :src="selectedContact ? selectedContact.avatar : ''" alt="">
                             <div class="personal-info">
                                 <h6 class="card-title">{{ selectedContact ? selectedContact.name : '' }}</h6>
-                                <p class="card-text">ultimo accesso oggi alle {{data}}</p>
+                                <p class="card-text">ultimo accesso oggi alle (ora del utlimo messaggio ricevuto dalla chat inerente)</p>
                             </div>
                         </div>
                         <div class="personal-chat-icon">
@@ -91,7 +91,9 @@
                         <div class="message-container"v-if="selectedContact">
                                 <div class="col-3 message" v-for="(message, index) in selectedContact.messages" :key="index" :class="{ 'user': message.status === 'sent', 'pc': message.status === 'received' }" >
                                     {{ message.message }}
+                                    <span id="ora-text">{{ message.oraMessaggio }}</span>
                                 </div>
+                            
                           </div>
                           <div class="message-container-search">
                                 <div class="icon-text-container col-2">

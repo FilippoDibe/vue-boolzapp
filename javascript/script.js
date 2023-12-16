@@ -1,3 +1,4 @@
+
 const {createApp} = Vue ;
 createApp({
    data(){
@@ -242,18 +243,23 @@ createApp({
     }
 
    },
-   ultimoMessaggio(contact) {
-    if (contact.messages && contact.messages.length > 0) {
-        const lastMessage = contact.messages[contact.messages.length - 1];
+    ultimoMessaggio(contact) {
+        if (contact.messages && contact.messages.length > 0) {
+            const lastMessage = contact.messages[contact.messages.length - 1];
 
-        if (lastMessage.status === 'sent') {
-           return `Tu: ${lastMessage.message}`;
-        } else {
-           return `${contact.name}: ${lastMessage.message}`;
+            if (lastMessage.status === 'sent') {
+            return `Tu: ${lastMessage.message}`;
+            } else {
+            return `${contact.name}: ${lastMessage.message}`;
+            }
         }
-     }
-     return 'Nessun messaggio';
- },
+        return 'Nessun messaggio';
+    },
+    getCurrentTime() {
+        return luxon.DateTime.local().toLocaleString(luxon.DateTime.TIME_SIMPLE);
+
+    },
+
 
 },
 }).mount('#app')

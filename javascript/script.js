@@ -233,6 +233,13 @@ createApp({
             return this.contacts.slice();
         }
     },
+    oraUltimoMessaggio(contact){
+        if(this.selectedContact && this.selectedContact.messages.length > 0){
+            const ultimoMessaggio = this.selectedContact.messages[this.selectedContact.messages.length - 1];
+            return ` ${ultimoMessaggio.oraMessaggio}`;
+        }
+        return '';
+    },
 },
 
     mounted() {
@@ -309,6 +316,13 @@ createApp({
             } else {
             return `${contact.name}: ${lastMessage.message}`;
             }
+        }
+        return 'Nessun messaggio';
+    },
+    oraUltimoMessaggioChat(contact) {
+        if (contact.messages && contact.messages.length > 0) {
+            const ultimoMessaggio = contact.messages[contact.messages.length - 1];
+            return ultimoMessaggio.oraMessaggio;
         }
         return 'Nessun messaggio';
     },

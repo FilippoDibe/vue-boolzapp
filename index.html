@@ -13,6 +13,10 @@
     <!-- link bootstrap -->
     <link rel="stylesheet" href=" 	https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
 
+    <!-- link luxon  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/luxon/3.4.4/luxon.min.js" integrity="sha512-dUlSLLkxslGILhPdCkALwk4szPhp3xmZIKFtlUD+O9Lslq41Aksmdt5OGqpomDoT4FsCUH70jQU8ezZHI3v1RQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
     <title>Document</title>
 </head>
 <body>
@@ -49,18 +53,18 @@
                     </div>
                     <div class="richerca-chat">
                         <i class="fa-solid fa-magnifying-glass"></i>
-                        <input type="text" v-model="searchChat" @input="searchMessaggi" placeholder="cerca o inizia una nuova chat">
+                        <input type="text" v-model="searchChat" placeholder="cerca o inizia una nuova chat">
                     </div>
                     <div class="chat-container">
                         <!-- qua tramite js creo dei div con una classe chat con all'interno tutte le varie specifiche  -->
     
                         <!-- creazione del primo item chat da esempio  -->
-                        <div v-for="(contact, index) in displayedContacts" :key="index" class="chat-item":class="{ 'active': contact === selectedContact || (index === 0 && !selectedContact)}" @click="selectContact(contact)">
+                        <div v-for="(contact, index) in richercaChat" :key="index" class="chat-item":class="{ 'active': contact === selectedContact || (index === 0 && !selectedContact)}" @click="selectContact(contact)">
                            <div class="block-1">
                             <img :src="contact.avatar" alt="">
                             <div class="personal-info">
                                 <h6 class="card-title">{{contact.name}}</h6>
-                                <p class="card-text">ultimo messaggio invitato</p>
+                                <p class="card-text">{{ ultimoMessaggio(contact) }}</p>
                             </div>
                            </div>
                              <!-- qui andra creata la funzione che prende l'ora dal mio pc e poi ci sottrae 5 minuti cosi da fare l'ultimo acesso -->
@@ -77,7 +81,7 @@
                             <img  :src="selectedContact ? selectedContact.avatar : ''" alt="">
                             <div class="personal-info">
                                 <h6 class="card-title">{{ selectedContact ? selectedContact.name : '' }}</h6>
-                                <p class="card-text">ultimo messaggio invitato</p>
+                                <p class="card-text">ultimo accesso oggi alle {{data}}</p>
                             </div>
                         </div>
                         <div class="personal-chat-icon">
@@ -99,7 +103,7 @@
                                     <i class="fa-regular fa-face-smile"></i>
                                 </div>
                                 <div class="text-input col-8">
-                                    <input type="text" placeholder="        scrivi un messaggio">
+                                    <input type="text" placeholder="scrivi un messaggio" v-model="nuovoMessaggio" @keydown.enter.prevent="inviaMessaggio">
                                 </div>
                                 <div class="icon-text-container col-2">
                                     <i class="fa-solid fa-microphone"></i>

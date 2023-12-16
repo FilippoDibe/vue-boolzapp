@@ -168,14 +168,15 @@ createApp({
         selectedContact: null,
         messagiVisualizati: [],
         searchChat: '',
-        chatFiltrata: [],
+        nuovoMessaggio: '',
+        
        
         
     }
 
    },
    computed: {
-    displayedContacts() {
+    richercaChat() {
         // Se c'è una query di ricerca, filtra e ordina i contatti, altrimenti mostra tutti i contatti
         if (this.searchChat.trim() !== '') {
             return this.contacts
@@ -187,6 +188,7 @@ createApp({
         }
     },
 },
+
     mounted() {
         
         // Seleziona il primo contatto quando l'app è montata
@@ -217,17 +219,43 @@ createApp({
             this.messagiVisualizati= [];
         }
     },
-    searchMessaggi(){
-        // ricerca del contatto 
-        const chatFiltrata = this.contacts.filter(contact => contact.name.toLowerCase().includes(this.searchMessaggi.toLowerCase()));
+    inviaMessaggio(){
+        if (this.selectedContact) {
+            const testoMessaggio = this.nuovoMessaggio.trim();
 
-        // ordina i contatti in ordine alfabetico 
-        this.contacts = chatFiltrata.sort((a,b) => a.name.localeCompare(b.name));
+            if (testoMessaggio !== '') {
+                const nuovoMessaggio = {
+                    date: new Date().toLocaleString(),
+                    message: testoMessaggio,
+                    status: 'sent',
+                };
 
-        this.displayedContacts = this.filteredContacts.length > 0 ? this.filteredContacts : this.contacts;
+
+            // aggiungo il nuovo messaggio 
+            this.selectedContact.messages.push(nuovoMessaggio);
+            
+            // dopo l'invio del messaggio svuotiamo l'input 
+            this.nuovoMessaggio= ' ',
+
+            this.messagiVisualizati = this.selectedContact.messages.slice();
+        }
     }
 
-   }
+   },
+   ultimoMessaggio(contact) {
+    if (contact.messages && contact.messages.length > 0) {
+        const lastMessage = contact.messages[contact.messages.length - 1];
+
+        if (lastMessage.status === 'sent') {
+           return `Tu: ${lastMessage.message}`;
+        } else {
+           return `${contact.name}: ${lastMessage.message}`;
+        }
+     }
+     return 'Nessun messaggio';
+ },
+
+},
 }).mount('#app')
    
   

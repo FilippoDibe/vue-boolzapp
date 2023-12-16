@@ -326,6 +326,20 @@ createApp({
         }
         return 'Nessun messaggio';
     },
+    oraUltimoMessaggioRicevuto(contact) {
+        if (contact.messages && contact.messages.length > 0) {
+            const messaggiRicevuti = contact.messages.filter(msg => msg.status === 'received');
+            if (messaggiRicevuti.length > 0) {
+                const ultimoMessaggioRicevuto = messaggiRicevuti[messaggiRicevuti.length - 1];
+                return ultimoMessaggioRicevuto.oraMessaggio;
+            }
+        }
+        return 'Nessun messaggio';
+    },
+
+
+    
+
     // getCurrentTime() {
     //     return luxon.DateTime.local().toLocaleString(luxon.DateTime.TIME_SIMPLE);
 

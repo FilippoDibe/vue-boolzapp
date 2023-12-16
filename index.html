@@ -76,7 +76,7 @@
                             <img  :src="selectedContact ? selectedContact.avatar : ''" alt="">
                             <div class="personal-info">
                                 <h6 class="card-title">{{ selectedContact ? selectedContact.name : '' }}</h6>
-                                <p class="card-text">ultimo accesso oggi alle: orario ultimo messaggio solo received</p>
+                                <p class="card-text">ultimo accesso oggi alle: {{ selectedContact ? oraUltimoMessaggioRicevuto(selectedContact) : '' }}</p>
                             </div>
                         </div>
                         <div class="personal-chat-icon">

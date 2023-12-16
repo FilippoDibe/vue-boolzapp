@@ -170,6 +170,8 @@ createApp({
         messagiVisualizati: [],
         searchChat: '',
         nuovoMessaggio: '',
+        currentTime: luxon.DateTime.local().toLocaleString(luxon.DateTime.TIME_SIMPLE),
+
         
        
         
@@ -194,6 +196,12 @@ createApp({
         
         // Seleziona il primo contatto quando l'app è montata
         this.selectContact(this.contacts[0]);
+
+        this.oraCorrente();
+
+        this.intervalId = setInterval(this.updateCurrentTime, 60000);
+
+
 
     },
    methods:{
@@ -259,6 +267,10 @@ createApp({
         return luxon.DateTime.local().toLocaleString(luxon.DateTime.TIME_SIMPLE);
 
     },
+    oraCorrente() {
+        // Ottieni l'orario corrente e aggiorna la variabile
+        this.currentTime = luxon.DateTime.local().toLocaleString(luxon.DateTime.TIME_SIMPLE);
+      },
 
 
 },

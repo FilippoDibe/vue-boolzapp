@@ -212,7 +212,7 @@ createApp({
         messagiVisualizati: [],
         searchChat: '',
         nuovoMessaggio: '',
-        // intervalId: null, 
+        staScrivendo: false,
 
 
         
@@ -288,6 +288,9 @@ createApp({
                     status: 'sent',
                     oraMessaggio: luxon.DateTime.local().toLocaleString(luxon.DateTime.TIME_SIMPLE),
 
+                    // gestione stascrivendo 
+                    
+
                 };
 
 
@@ -299,7 +302,9 @@ createApp({
 
                 this.messagiVisualizati = this.selectedContact.messages.slice();
                   // invio automatico 
+                  this.staScrivendo = true;
                   setTimeout(() => {
+                    this.staScrivendo = false;
                     this.ottieniSuggerimentoAttivita();
                 }, 3000);
         

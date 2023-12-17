@@ -299,21 +299,10 @@ createApp({
 
                 this.messagiVisualizati = this.selectedContact.messages.slice();
                   // invio automatico 
-                setTimeout(()=>{
-                    const rispostaAutomatica ={
-                        date: new Date().toLocaleString(),
-                        message:'OK',
-                        status: 'received',
-                        oraMessaggio: luxon.DateTime.local().toLocaleString(luxon.DateTime.TIME_SIMPLE)
-
-                    };
-
-                    // aggiungo la risposta automatica 
-                    this.selectedContact.messages.push(rispostaAutomatica);
-
-                    // aggiornamento della visualizzazione 
-                    this.messagiVisualizati = this.selectedContact.messages.slice()
-                }, 30000 );
+                  setTimeout(() => {
+                    this.ottieniSuggerimentoAttivita();
+                }, 3000);
+        
             }
 
         
@@ -350,6 +339,29 @@ createApp({
         }
         return 'Nessun messaggio';
     },
+    ottieniSuggerimentoAttivita() {
+        fetch('https://www.boredapi.com/api/activity')
+            .then(response => response.json())
+            .then(data => {
+                if(data && data.activity) {
+                    this.aggiungiRispostaAutomatica(data.activity);
+                }
+            })
+            .catch(error => console.error('Errore API:', error));
+    },
+
+    aggiungiRispostaAutomatica(attivita) {
+        const rispostaAutomatica = {
+            date: new Date().toLocaleString(),
+            message: attivita, // Suggerimento per l'attività
+            status: 'received',
+            oraMessaggio: luxon.DateTime.local().toLocaleString(luxon.DateTime.TIME_SIMPLE)
+        };
+
+        this.selectedContact.messages.push(rispostaAutomatica);
+        this.messagiVisualizati = this.selectedContact.messages.slice();
+    },
+
 
 
     
@@ -361,4 +373,3 @@ createApp({
 },
 }).mount('#app')
    
-  

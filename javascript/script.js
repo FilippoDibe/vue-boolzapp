@@ -390,14 +390,37 @@ createApp({
         this.newContact.name = '';
         this.newContact.avatar = '';
     }
-   }
+   },
+   deleteMessage(index){
+    // restituzione dì messaggio eliminato 
+    if (this.selectedContact && index >= 0 && index < this.selectedContact.messages.length) {
+        this.selectedContact.messages[index].message = 'Il messaggio è stato cancellato';   }
 
 
-    
+    },
+    deleteChat(){
+        if (this.selectedContact) {
+            const index = this.contacts.findIndex(contact => contact === this.selectedContact);
+            if (index !== -1) {
+                // Rimuovi la conversazione selezionata
+                this.contacts.splice(index, 1);
 
-    
+                // Se c'erano altre conversazioni dopo quella eliminata, seleziona la successiva
+                if (index < this.contacts.length) {
+                    this.selectedContact = this.contacts[index];
+                } else if (this.contacts.length > 0) {
+                    // Altrimenti, se ci sono ancora conversazioni, seleziona la prima
+                    this.selectedContact = this.contacts[0];
+                } else {
+                    // Se non ci sono altre conversazioni, deseleziona tutto
+                    this.selectedContact = null;
+                }
+            }
+        }
 
 
+
+    }
 
 },
 }).mount('#app')

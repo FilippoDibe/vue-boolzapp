@@ -112,7 +112,15 @@
                         <div class="message-container"v-if="selectedContact">
                                 <div class="col-3 message" v-for="(message, index) in selectedContact.messages" :key="index" :class="{ 'user': message.status === 'sent', 'pc': message.status === 'received' }" >
                                     {{ message.message }}
+                                    <div class="message-options">
+                                        <i class="fa-solid fa-chevron-down" data-bs-toggle="dropdown"></i>
+                                        <ul class="dropdown-menu dropdown-menu-end">
+                                            <li><a class="dropdown-item" href="#" @click="deleteMessage(index)">Cancella messaggio</a></li>
+                                            <li><a class="dropdown-item" href="#" @click="deleteChat(index)">Cancella conversazione</a></li>
+                                        </ul>
+                                    </div>
                                     <span id="ora-text">{{ message.oraMessaggio }}</span>
+
                                 </div>
                             
                           </div>

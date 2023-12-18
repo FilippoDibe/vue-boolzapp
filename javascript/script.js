@@ -214,6 +214,13 @@ createApp({
         nuovoMessaggio: '',
         staScrivendo: false,
 
+        newContact: {
+            name: '',
+            avatar: '',
+        },
+
+        
+
 
         
        
@@ -266,8 +273,8 @@ createApp({
         // elemento selezionato 
         this.selectedContact = contact;
 
-        // aggiurnamento dei messaggi al click 
-        this.messagiVisualizati();
+    
+       
     },
     messagiVisualizati(){
         // recupero dei messaggi in base alla chat 
@@ -366,7 +373,24 @@ createApp({
         this.selectedContact.messages.push(rispostaAutomatica);
         this.messagiVisualizati = this.selectedContact.messages.slice();
     },
-
+    inviaMessaggioConIcona(){
+        if(this.nuovoMessaggio.trim()!==''){
+            this.inviaMessaggio();
+            this.nuovoMessaggio=''
+        }
+    },
+   addContact(){
+    if(this.newContact.name && this.newContact.avatar){
+        const contactToAdd = {
+            name: this.newContact.name,
+            avatar: this.newContact.avatar,
+            messages:[],
+        };
+        this.contacts.push(contactToAdd);
+        this.newContact.name = '';
+        this.newContact.avatar = '';
+    }
+   }
 
 
     

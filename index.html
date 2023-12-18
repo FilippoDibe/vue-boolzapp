@@ -22,7 +22,7 @@
         <div class="fascia-bianca">
 
         </div>
-        <div id="app">
+        <div id="app"
             <div class="container-info">
                 <div class="side-bar col-4">
                     <div class="personal-account">
@@ -31,7 +31,25 @@
                             <h6>Sofia</h6>
                         </div>
                         <div class="icon-personale">
-                            <i class="fa-solid fa-circle-notch"></i>
+                            <i class="fa-solid fa-circle-notch"  data-bs-toggle="modal" data-bs-target="#addContactModal"></i>
+                            <div class="modal fade" id="addContactModal" tabindex="-1" aria-labelledby="addContactModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="addContactModalLabel">Aggiungi Nuova Conversazione</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <input type="text" v-model="newContact.name" placeholder="Nome Contatto" class="form-control mb-2">
+                                                <input type="text" v-model="newContact.avatar" placeholder="URL Immagine" class="form-control">
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+                                                <button type="button" class="btn btn-primary" @click="addContact">Aggiungi Contatto</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             <i class="fa-solid fa-message"></i>
                             <i class="fa-solid fa-ellipsis-vertical"></i>
                         </div>
@@ -106,7 +124,8 @@
                                     <input type="text" placeholder="scrivi un messaggio" v-model="nuovoMessaggio" @keydown.enter.prevent="inviaMessaggio">
                                 </div>
                                 <div class="icon-text-container col-2">
-                                    <i class="fa-solid fa-microphone"></i>
+                                    <i v-if="nuovoMessaggio" class="fa-solid fa-paper-plane" @click="inviaMessaggioConIcona"></i>
+                                    <i v-else class="fa-solid fa-microphone"></i>
                                 </div>
                           </div>
                         
@@ -127,8 +146,9 @@
 
     </div>
 
-  
-    <!-- link luxon -->
+  <!-- script bootstrap  -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- script luxon -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/luxon/3.4.4/luxon.min.js" integrity="sha512-dUlSLLkxslGILhPdCkALwk4szPhp3xmZIKFtlUD+O9Lslq41Aksmdt5OGqpomDoT4FsCUH70jQU8ezZHI3v1RQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <!-- script vue -->
